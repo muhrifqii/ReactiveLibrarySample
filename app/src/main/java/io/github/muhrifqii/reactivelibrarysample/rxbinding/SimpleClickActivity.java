@@ -45,7 +45,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class SimpleClickActivity extends AppCompatActivity {
-
+  private static final String KEY_STATE_CTR = "ctr";
   private int counter;
   private final CompositeSubscription subs = new CompositeSubscription();
   private TextView textView, tvTick;
@@ -53,11 +53,16 @@ public class SimpleClickActivity extends AppCompatActivity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    if (savedInstanceState != null) {
+      counter = savedInstanceState.getInt(KEY_STATE_CTR, 0);
+    } else {
+      counter = 0;
+    }
     setContentView(R.layout.activity_simple_click);
     textView = (TextView) findViewById(R.id.tv_hello_reactive);
     tvTick = (TextView) findViewById(R.id.tv_tick);
     btnTicker = ((Button) findViewById(R.id.btn_ticker));
-    counter = 0;
+    tvTick.setText(String.valueOf(counter));
   }
 
   @Override protected void onStart() {
@@ -82,6 +87,11 @@ public class SimpleClickActivity extends AppCompatActivity {
   @Override protected void onDestroy() {
     subs.clear();
     super.onDestroy();
+  }
+
+  @Override protected void onSaveInstanceState(Bundle outState) {
+    outState.putInt(KEY_STATE_CTR, counter);
+    super.onSaveInstanceState(outState);
   }
 
   private void clickeEvent(View view) {

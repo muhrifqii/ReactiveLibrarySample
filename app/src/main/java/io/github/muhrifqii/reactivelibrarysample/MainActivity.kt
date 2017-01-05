@@ -22,10 +22,19 @@
  * SOFTWARE.
  */
 
-package io.github.muhrifqii.reactivelibrarysample;
+package io.github.muhrifqii.reactivelibrarysample
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.widget.ArrayAdapter
+import android.widget.ListAdapter
+import android.widget.ListView
+import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView
+import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerViewAdapter
+import com.jakewharton.rxbinding.widget.RxAdapter
+import io.github.muhrifqii.reactivelibrarysample.bases.SampleRxBaseActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
+import java.util.ArrayList
 
 /**
  * Created on   : 05/01/17
@@ -35,9 +44,16 @@ import android.support.v7.app.AppCompatActivity;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class MainActivity extends AppCompatActivity{
-  @Override public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+class MainActivity : SampleRxBaseActivity() {
+
+  public override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+  }
+
+  private fun listItem(): Array<String> {
+    val x = ArrayList<String>()
+    x.add("RxView click and long click")
+    return x.toTypedArray()
   }
 }

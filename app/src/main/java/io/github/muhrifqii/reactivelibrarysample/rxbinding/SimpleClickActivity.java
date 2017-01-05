@@ -24,7 +24,6 @@
 
 package io.github.muhrifqii.reactivelibrarysample.rxbinding;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +32,7 @@ import android.widget.Toast;
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
 import io.github.muhrifqii.reactivelibrarysample.R;
-import rx.functions.Func1;
+import io.github.muhrifqii.reactivelibrarysample.bases.SampleRxBaseActivity;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -44,7 +43,7 @@ import rx.subscriptions.CompositeSubscription;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class SimpleClickActivity extends AppCompatActivity {
+public class SimpleClickActivity extends SampleRxBaseActivity {
   private static final String KEY_STATE_CTR = "ctr";
   private int counter;
   private final CompositeSubscription subs = new CompositeSubscription();
@@ -81,11 +80,10 @@ public class SimpleClickActivity extends AppCompatActivity {
 
   @Override protected void onStop() {
     super.onStop();
-    subs.unsubscribe();
+    subs.clear();
   }
 
   @Override protected void onDestroy() {
-    subs.clear();
     super.onDestroy();
   }
 

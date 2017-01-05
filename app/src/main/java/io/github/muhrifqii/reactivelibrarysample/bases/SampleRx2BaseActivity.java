@@ -34,5 +34,5 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class SampleRx2BaseActivity extends RxAppCompatActivity{
+public abstract class SampleRx2BaseActivity extends RxAppCompatActivity{
 }

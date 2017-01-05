@@ -35,5 +35,4 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
  */
 
 public abstract class SampleRxBaseActivity extends RxAppCompatActivity {
-
 }

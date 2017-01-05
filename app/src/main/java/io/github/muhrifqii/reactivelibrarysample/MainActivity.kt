@@ -49,6 +49,7 @@ class MainActivity : SampleRxBaseActivity() {
   public override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    
   }
 
   private fun listItem(): Array<String> {

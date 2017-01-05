@@ -35,13 +35,12 @@ import android.view.ViewGroup;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class MainListAdapter extends RecyclerView.Adapter<MainLinearViewHolder>{
-
-  @Override public MainLinearViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return null;
+public class MainListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+  @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    return new MainLinearViewHolder()
   }
 
-  @Override public void onBindViewHolder(MainLinearViewHolder holder, int position) {
+  @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
   }
 

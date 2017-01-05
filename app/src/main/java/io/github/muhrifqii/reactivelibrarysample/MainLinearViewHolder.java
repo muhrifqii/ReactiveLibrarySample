@@ -35,8 +35,12 @@ import android.view.View;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class MainLinearViewHolder extends RecyclerView.ViewHolder {
+public class MainLinearViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
   public MainLinearViewHolder(View itemView) {
     super(itemView);
+  }
+
+  @Override public void onClick(View view) {
+    
   }
 }

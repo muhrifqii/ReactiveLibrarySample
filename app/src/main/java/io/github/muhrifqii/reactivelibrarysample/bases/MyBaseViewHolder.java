@@ -22,25 +22,41 @@
  * SOFTWARE.
  */
 
-package io.github.muhrifqii.reactivelibrarysample;
+package io.github.muhrifqii.reactivelibrarysample.bases;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Created on   : 05/01/17
+ * Created on   : 06/01/17
  * Author       : muhrifqii
  * Name         : Muhammad Rifqi Fatchurrahman Putra Danar
  * Github       : https://github.com/muhrifqii
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class MainLinearViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-  public MainLinearViewHolder(View itemView) {
+public abstract class MyBaseViewHolder extends RecyclerView.ViewHolder
+    implements View.OnClickListener {
+  private final View view;
+
+  public MyBaseViewHolder(final @NonNull View itemView) {
     super(itemView);
+    this.view = itemView;
+    view.setOnClickListener(this);
   }
 
-  @Override public void onClick(View view) {
-    
+  @Override public abstract void onClick(final @NonNull View view);
+
+  public abstract void bind(final @Nullable Object data) throws Exception;
+
+  public @NonNull View getView() {
+    return view;
+  }
+
+  public @NonNull Context getContext(){
+    return view.getContext();
   }
 }

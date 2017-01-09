@@ -22,10 +22,12 @@
  * SOFTWARE.
  */
 
-package io.github.muhrifqii.reactivelibrarysample;
+package io.github.muhrifqii.reactivelibrarysample
 
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import io.github.muhrifqii.reactivelibrarysample.bases.MyBaseViewHolder
 
 /**
  * Created on   : 05/01/17
@@ -35,16 +37,27 @@ import android.view.ViewGroup;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class MainListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-  @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new MainLinearViewHolder()
+class MainLinearViewHolder(itemView: View, private val delegate: MainLinearViewHolder.Delegate) :
+    MyBaseViewHolder(itemView) {
+  private lateinit var data: MainModel
+
+  interface Delegate {
+    fun onMainLinearViewHolderClicked(holder: MainLinearViewHolder, data: MainModel)
   }
 
-  @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+  override fun onClick(view: View) {
+    delegate.onMainLinearViewHolderClicked(this, data)
   }
 
-  @Override public int getItemCount() {
-    return 0;
+  @Throws(Exception::class)
+  override fun bind(data: Any?) {
+    if (data == null) {
+      throw Exception("null")
+    }
+
+    this.data = data as MainModel
+    val thumb = view.findViewById(R.id.iv_item_main) as ImageView
+    val title = view.findViewById(R.id.tv_title) as TextView
+    title.text = this.data.name
   }
 }

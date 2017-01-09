@@ -23,17 +23,40 @@
   ~ SOFTWARE.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="12dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     >
-  <TextView
+  <View
+      android:id="@+id/divider"
+      android:layout_width="match_parent"
+      android:layout_height="2dp"
+      android:layout_below="@+id/ll_item_main"
+      android:background="?android:listDivider"
+      />
+  <LinearLayout
+      android:id="@id/ll_item_main"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/tv_title"
-      android:textSize="42sp"
-      android:text="title"
-      />
-</LinearLayout>
+      android:orientation="horizontal"
+      android:padding="12dp"
+      >
+    <ImageView
+        android:id="@+id/iv_item_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_launcher"
+        />
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="@dimen/view_padding"
+        android:text="title jlfj slk fjfdslk jlsd jlksd "
+        style="@style/TextAppearance.AppCompat.Large"
+        />
+  </LinearLayout>
+</RelativeLayout>

@@ -22,15 +22,16 @@
  * SOFTWARE.
  */
 
-package io.github.muhrifqii.reactivelibrarysample
+package io.github.muhrifqii.reactivelibrarysample.bases;
 
-import android.content.Intent
-import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import io.github.muhrifqii.reactivelibrarysample.MainAdapter.Delegate
-import io.github.muhrifqii.reactivelibrarysample.bases.SampleRxBaseActivity
-import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on   : 05/01/17
@@ -40,33 +41,38 @@ import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-class MainActivity : SampleRxBaseActivity(), Delegate {
+public abstract class MyBaseAdapter extends RecyclerView.Adapter<MyBaseViewHolder> {
+  private List<Object> datas = new ArrayList<>();
 
-  private lateinit var list: RecyclerView
+  public abstract @LayoutRes int layout();
 
-  public override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    list = findViewById(R.id.list_main) as RecyclerView
-    list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-    list.adapter = MainAdapter(this, initData())
+  public abstract @NonNull MyBaseViewHolder viewHolder(final @LayoutRes int layout,
+      final @NonNull View view);
+
+  @Override public MyBaseViewHolder onCreateViewHolder(final @NonNull ViewGroup parent,
+      final @LayoutRes int viewType) {
+    final View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+    return viewHolder(viewType, view);
   }
 
-  override fun onDestroy() {
-    super.onDestroy()
-    list.adapter = null
-    list.layoutManager = null
+  @Override public void onBindViewHolder(MyBaseViewHolder holder, int position) {
+    final Object data = datas.get(position);
+    try {
+      holder.bind(data);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
-  override fun onMainLinearViewHolderClicked(holder: MainLinearViewHolder, data: MainModel) {
-    startActivity(Intent(this, data.clazz))
+  @Override public int getItemCount() {
+    return datas.size();
   }
 
-  private fun initData(): List<MainModel> {
-    return listOf(
-        MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
-        MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
-        MainModel("RxBinding - Clicks", SimpleClickActivity::class.java)
-    )
+  @Override public int getItemViewType(final int position) {
+    return layout();
+  }
+
+  public <T> void bind(final @NonNull List<T> datas) {
+    this.datas = new ArrayList<>(datas);
   }
 }

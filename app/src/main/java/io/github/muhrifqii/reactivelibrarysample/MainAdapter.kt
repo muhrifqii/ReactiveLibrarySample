@@ -24,16 +24,33 @@
 
 package io.github.muhrifqii.reactivelibrarysample
 
+import android.support.annotation.LayoutRes
+import android.view.View
+import io.github.muhrifqii.reactivelibrarysample.bases.MyBaseAdapter
+import io.github.muhrifqii.reactivelibrarysample.bases.MyBaseViewHolder
+
 /**
- * Created on   : 05/01/17
+ * Created on   : 08/01/17
  * Author       : muhrifqii
  * Name         : Muhammad Rifqi Fatchurrahman Putra Danar
  * Github       : https://github.com/muhrifqii
  * LinkedIn     : https://linkedin.com/in/muhrifqii
- *
- * list item written in kotlin just to minimize the boilerplate
- * @param name the name it should appeared in view
- * @param clazz activity class related to it
  */
-data class MainModel(var name: String, var clazz: Class<*>) {
+
+class MainAdapter(private val delegate: MainAdapter.Delegate, datas: List<MainModel>) :
+    MyBaseAdapter() {
+
+  interface Delegate : MainLinearViewHolder.Delegate
+
+  init {
+    bind(datas)
+  }
+
+  override fun layout(): Int {
+    return R.layout.list_item_main_view
+  }
+
+  override fun viewHolder(@LayoutRes layout: Int, view: View): MyBaseViewHolder {
+    return MainLinearViewHolder(view, delegate)
+  }
 }

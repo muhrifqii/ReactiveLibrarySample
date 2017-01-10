@@ -29,8 +29,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import io.github.muhrifqii.reactivelibrarysample.MainAdapter.Delegate
-import io.github.muhrifqii.reactivelibrarysample.bases.SampleRxBaseActivity
+import io.github.muhrifqii.reactivelibrarysample.bases.SampleRx2BaseActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickKotlinActivity
 
 /**
  * Created on   : 05/01/17
@@ -40,7 +41,7 @@ import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-class MainActivity : SampleRxBaseActivity(), Delegate {
+class MainActivity : SampleRx2BaseActivity(), Delegate {
 
   private lateinit var list: RecyclerView
 
@@ -65,7 +66,7 @@ class MainActivity : SampleRxBaseActivity(), Delegate {
   private fun initData(): List<MainModel> {
     return listOf(
         MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
-        MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
+        MainModel("RxBinding - Clicks in Kotlin", SimpleClickKotlinActivity::class.java),
         MainModel("RxBinding - Clicks", SimpleClickActivity::class.java)
     )
   }

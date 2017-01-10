@@ -16,7 +16,8 @@
       </intent-filter>
     </activity>
     <activity android:name=".rxbinding.SimpleClickActivity">
-
+    </activity>
+    <activity android:name=".rxbinding.SimpleClickKotlinActivity">
     </activity>
   </application>
 

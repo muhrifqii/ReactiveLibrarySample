@@ -24,6 +24,10 @@
 
 package io.github.muhrifqii.reactivelibrarysample.bases;
 
+import android.app.AlertDialog;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**
@@ -34,5 +38,22 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public abstract class SampleRx2BaseActivity extends RxAppCompatActivity{
+public abstract class SampleRx2BaseActivity extends RxAppCompatActivity {
+  @Override protected void onResume() {
+    super.onResume();
+    popUpForSupports();
+  }
+
+  private void popUpForSupports(){
+    int counter = PreferenceManager.getDefaultSharedPreferences(this).getInt("x", 0);
+    counter++;
+    if (counter > 3) {
+      new AlertDialog.Builder(this).setTitle("Stars for supports")
+          .setMessage("Please star this project on github to support the contributor(s)")
+          .create()
+          .show();
+      counter = 0;
+    }
+    PreferenceManager.getDefaultSharedPreferences(this).edit().putInt("x", counter).apply();
+  }
 }

@@ -34,6 +34,9 @@ import io.github.muhrifqii.reactivelibrarysample.bases.SampleRx2BaseActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickKotlinActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.ComplexTextChangesActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.ComplexTextChangesKotlinActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleTextChangesActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleTextChangesKotlinActivity
 
 /**
  * Created on   : 05/01/17
@@ -69,7 +72,10 @@ class MainActivity : SampleRx2BaseActivity(), Delegate {
     return listOf(
         MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
         MainModel("RxBinding - Clicks in Kotlin", SimpleClickKotlinActivity::class.java),
-        MainModel("RxBinding - Advance Text Changes", ComplexTextChangesActivity::class.java)
+        MainModel("RxBinding - Basic Text Changes", SimpleTextChangesActivity::class.java),
+        MainModel("RxBinding - Basic Text Changes in Kotlin", SimpleTextChangesKotlinActivity::class.java),
+        MainModel("RxBinding - Advance Text Changes", ComplexTextChangesActivity::class.java),
+        MainModel("RxBinding - Advance Text Changes in Kotlin", ComplexTextChangesKotlinActivity::class.java)
     )
   }
 }

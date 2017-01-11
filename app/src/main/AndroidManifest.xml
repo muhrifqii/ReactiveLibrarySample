@@ -21,6 +21,8 @@
     </activity>
     <activity android:name=".rxbinding.ComplexTextChangesActivity">
     </activity>
+    <activity android:name=".rxbinding.SimpleTextChangesActivity">
+    </activity>
   </application>
 
 </manifest>

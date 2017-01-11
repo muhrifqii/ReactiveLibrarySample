@@ -21,7 +21,11 @@
     </activity>
     <activity android:name=".rxbinding.ComplexTextChangesActivity">
     </activity>
+    <activity android:name=".rxbinding.ComplexTextChangesKotlinActivity">
+    </activity>
     <activity android:name=".rxbinding.SimpleTextChangesActivity">
+    </activity>
+    <activity android:name=".rxbinding.SimpleTextChangesKotlinActivity">
     </activity>
   </application>
 

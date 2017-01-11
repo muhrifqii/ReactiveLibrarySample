@@ -28,11 +28,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import io.github.muhrifqii.reactivelibrarysample.MainAdapter.Delegate
 import io.github.muhrifqii.reactivelibrarysample.bases.SampleRx2BaseActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickKotlinActivity
-import io.github.muhrifqii.reactivelibrarysample.rxbinding.TextChangesActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.ComplexTextChangesActivity
 
 /**
  * Created on   : 05/01/17
@@ -68,7 +69,7 @@ class MainActivity : SampleRx2BaseActivity(), Delegate {
     return listOf(
         MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
         MainModel("RxBinding - Clicks in Kotlin", SimpleClickKotlinActivity::class.java),
-        MainModel("RxBinding - Text Changes", TextChangesActivity::class.java)
+        MainModel("RxBinding - Advance Text Changes", ComplexTextChangesActivity::class.java)
     )
   }
 }

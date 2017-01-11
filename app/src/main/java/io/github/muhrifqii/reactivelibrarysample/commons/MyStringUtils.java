@@ -25,6 +25,7 @@
 package io.github.muhrifqii.reactivelibrarysample.commons;
 
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.Patterns;
 
 /**
@@ -35,8 +36,21 @@ import android.util.Patterns;
  * LinkedIn     : https://linkedin.com/in/muhrifqii
  */
 
-public class StringUtils {
-  public static boolean isTextEmailAddress(final @NonNull CharSequence text){
+public class MyStringUtils {
+  public static boolean isTextEmailAddress(final @NonNull CharSequence text) {
     return Patterns.EMAIL_ADDRESS.matcher(text).matches();
+  }
+
+  public static boolean isPasswordSafe(final @NonNull CharSequence text) {
+    return text.length() > 6;
+  }
+
+  public static boolean isTextNotEmpty(final @NonNull CharSequence text) {
+    return !TextUtils.isEmpty(text);
+  }
+
+  public static boolean isSameWith(final @NonNull CharSequence text1,
+      final @NonNull CharSequence text2) {
+    return TextUtils.equals(text1, text2);
   }
 }

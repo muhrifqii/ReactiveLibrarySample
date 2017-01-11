@@ -19,7 +19,7 @@
     </activity>
     <activity android:name=".rxbinding.SimpleClickKotlinActivity">
     </activity>
-    <activity android:name=".rxbinding.TextChangesActivity">
+    <activity android:name=".rxbinding.ComplexTextChangesActivity">
     </activity>
   </application>
 

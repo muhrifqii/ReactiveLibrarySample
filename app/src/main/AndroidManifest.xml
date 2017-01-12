@@ -27,6 +27,8 @@
     </activity>
     <activity android:name=".rxbinding.SimpleTextChangesKotlinActivity">
     </activity>
+    <activity android:name=".rxbinding.CheckedChangeActivity">
+    </activity>
   </application>
 
 </manifest>

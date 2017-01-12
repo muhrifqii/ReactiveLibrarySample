@@ -91,7 +91,7 @@ public class CheckedChangeActivity extends AppCompatActivity {
             .subscribe(RxTextView.text(tvDetail));
     final Subscription s2 = Observable.combineLatest(f, p, c,
         (x, y, z) -> !(x == Dishes.BLANK && y == Dishes.BLANK && z == Dishes.BLANK))
-        .subscribe(RxView.enabled(radioGroup));
+        .subscribe(this::spiciesSwitchEnableChanges);
     subs.add(s1);
     subs.add(s2);
     f.connect();
@@ -137,5 +137,11 @@ public class CheckedChangeActivity extends AppCompatActivity {
       x.append(tmp.get(i).toString());
     }
     return x.toString();
+  }
+
+  private void spiciesSwitchEnableChanges(final boolean bool) {
+    RxView.enabled(spices).call(bool);
+    RxView.visibility(radioGroup).call(bool);
+    RxRadioGroup.checked(radioGroup).call(-1);
   }
 }

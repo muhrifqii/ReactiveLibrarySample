@@ -49,6 +49,8 @@ import rx.subscriptions.CompositeSubscription;
 
 public class CheckedChangeActivity extends AppCompatActivity {
   private static final String KEY_STATE = "state";
+  private String detail = "";
+  private String spicyDetail = "";
   private CompositeSubscription subs = new CompositeSubscription();
   private AppCompatCheckBox frenchFies, potato, chicken;
   private SwitchCompat spices;
@@ -104,6 +106,8 @@ public class CheckedChangeActivity extends AppCompatActivity {
         sp.map(checked -> checked ? R.id.radio_1 : -1).subscribe(RxRadioGroup.checked(radioGroup)));
     sp.connect();
     // event from radio button group
+    final ConnectableObservable<Integer> rb = RxRadioGroup.checkedChanges(radioGroup).publish();
+    //RxRadioGroup.checkedChanges(radioGroup).map()
   }
 
   @Override protected void onStop() {
@@ -136,12 +140,30 @@ public class CheckedChangeActivity extends AppCompatActivity {
     for (int i = tmp.size() - 1; i >= 0; i--) {
       x.append(tmp.get(i).toString());
     }
-    return x.toString();
+    detail = x.toString();
+    return x.append(spicyDetail).toString();
   }
 
   private void spiciesSwitchEnableChanges(final boolean bool) {
     RxView.enabled(spices).call(bool);
     RxView.visibility(radioGroup).call(bool);
     RxRadioGroup.checked(radioGroup).call(-1);
+  }
+
+  private @NonNull String spicyLevelToSentence(final int id) {
+    switch (id) {
+      case R.id.radio_1:
+
+        break;
+      case R.id.radio_2:
+        break;
+      case R.id.radio_3:
+        break;
+      case R.id.radio_4:
+        break;
+      default:
+        return "";
+    }
+    return detail;
   }
 }

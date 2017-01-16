@@ -54,9 +54,9 @@ dependencies {
   compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
   // #1 platform binding (currently available only for rxjava1)
-  compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+//  compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
   compile 'com.jakewharton.rxbinding:rxbinding-kotlin:1.0.0'
-  compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
+//  compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0'
   compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:1.0.0'
 
   // #2 reactive lifecycle android

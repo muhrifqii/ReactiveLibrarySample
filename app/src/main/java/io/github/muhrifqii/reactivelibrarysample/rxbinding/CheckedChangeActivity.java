@@ -24,6 +24,7 @@
 
 package io.github.muhrifqii.reactivelibrarysample.rxbinding;
 
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -101,13 +102,17 @@ public class CheckedChangeActivity extends AppCompatActivity {
     c.connect();
     // event from switch
     final ConnectableObservable<Boolean> sp = RxCompoundButton.checkedChanges(spices).publish();
+    subs.add(sp.filter(checked -> !checked).subscribe(__ -> spicyDetail = ""));
     subs.add(sp.subscribe(RxView.visibility(radioGroup)));
     subs.add(
         sp.map(checked -> checked ? R.id.radio_1 : -1).subscribe(RxRadioGroup.checked(radioGroup)));
     sp.connect();
     // event from radio button group
     final ConnectableObservable<Integer> rb = RxRadioGroup.checkedChanges(radioGroup).publish();
-    //RxRadioGroup.checkedChanges(radioGroup).map()
+    final Subscription s3 = RxRadioGroup.checkedChanges(radioGroup)
+        .map(this::spicyLevelToSentence)
+        .subscribe(RxTextView.text(tvDetail));
+    subs.add(s3);
   }
 
   @Override protected void onStop() {
@@ -146,24 +151,26 @@ public class CheckedChangeActivity extends AppCompatActivity {
 
   private void spiciesSwitchEnableChanges(final boolean bool) {
     RxView.enabled(spices).call(bool);
-    RxView.visibility(radioGroup).call(bool);
-    RxRadioGroup.checked(radioGroup).call(-1);
+    //RxRadioGroup.checked(radioGroup).call(-1);
   }
 
-  private @NonNull String spicyLevelToSentence(final int id) {
+  private @NonNull String spicyLevelToSentence(final @IdRes int id) {
     switch (id) {
       case R.id.radio_1:
-
+        spicyDetail = " Level 1";
         break;
       case R.id.radio_2:
+        spicyDetail = " Level 2";
         break;
       case R.id.radio_3:
+        spicyDetail = " Level 3";
         break;
       case R.id.radio_4:
+        spicyDetail = " Level 4";
         break;
       default:
-        return "";
+        spicyDetail = "";
     }
-    return detail;
+    return detail + spicyDetail;
   }
 }

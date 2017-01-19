@@ -31,6 +31,7 @@ import android.support.v7.widget.RecyclerView
 import io.github.muhrifqii.reactivelibrarysample.MainAdapter.Delegate
 import io.github.muhrifqii.reactivelibrarysample.bases.SampleRx2BaseActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.CheckedChangeActivity
+import io.github.muhrifqii.reactivelibrarysample.rxbinding.CheckedChangeKtActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.SimpleClickKotlinActivity
 import io.github.muhrifqii.reactivelibrarysample.rxbinding.ComplexTextChangesActivity
@@ -73,10 +74,13 @@ class MainActivity : SampleRx2BaseActivity(), Delegate {
         MainModel("RxBinding - Clicks", SimpleClickActivity::class.java),
         MainModel("RxBinding - Clicks in Kotlin", SimpleClickKotlinActivity::class.java),
         MainModel("RxBinding - Basic Text Changes", SimpleTextChangesActivity::class.java),
-        MainModel("RxBinding - Basic Text Changes in Kotlin", SimpleTextChangesKotlinActivity::class.java),
+        MainModel("RxBinding - Basic Text Changes in Kotlin",
+            SimpleTextChangesKotlinActivity::class.java),
         MainModel("RxBinding - Advance Text Changes", ComplexTextChangesActivity::class.java),
-        MainModel("RxBinding - Advance Text Changes in Kotlin", ComplexTextChangesKotlinActivity::class.java),
-        MainModel("RxBinding - Checked Changes", CheckedChangeActivity::class.java)
+        MainModel("RxBinding - Advance Text Changes in Kotlin",
+            ComplexTextChangesKotlinActivity::class.java),
+        MainModel("RxBinding - Checked Changes", CheckedChangeActivity::class.java),
+        MainModel("RxBinding - Checked Changes in Kotlin", CheckedChangeKtActivity::class.java)
     )
   }
 }

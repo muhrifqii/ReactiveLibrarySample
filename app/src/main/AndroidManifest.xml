@@ -29,6 +29,8 @@
     </activity>
     <activity android:name=".rxbinding.CheckedChangeActivity">
     </activity>
+    <activity android:name=".rxbinding.CheckedChangeKtActivity">
+    </activity>
   </application>
 
 </manifest>

@@ -94,7 +94,7 @@ public class CheckedChangeActivity extends AppCompatActivity {
             .subscribe(RxTextView.text(tvDetail));
     final Subscription s2 = Observable.combineLatest(f, p, c,
         (x, y, z) -> !(x == Dishes.BLANK && y == Dishes.BLANK && z == Dishes.BLANK))
-        .subscribe(this::spiciesSwitchEnableChanges);
+        .subscribe(RxView.enabled(spices));
     subs.add(s1);
     subs.add(s2);
     f.connect();
@@ -108,7 +108,6 @@ public class CheckedChangeActivity extends AppCompatActivity {
         sp.map(checked -> checked ? R.id.radio_1 : -1).subscribe(RxRadioGroup.checked(radioGroup)));
     sp.connect();
     // event from radio button group
-    final ConnectableObservable<Integer> rb = RxRadioGroup.checkedChanges(radioGroup).publish();
     final Subscription s3 = RxRadioGroup.checkedChanges(radioGroup)
         .map(this::spicyLevelToSentence)
         .subscribe(RxTextView.text(tvDetail));
@@ -147,11 +146,6 @@ public class CheckedChangeActivity extends AppCompatActivity {
     }
     detail = x.toString();
     return x.append(spicyDetail).toString();
-  }
-
-  private void spiciesSwitchEnableChanges(final boolean bool) {
-    RxView.enabled(spices).call(bool);
-    //RxRadioGroup.checked(radioGroup).call(-1);
   }
 
   private @NonNull String spicyLevelToSentence(final @IdRes int id) {
